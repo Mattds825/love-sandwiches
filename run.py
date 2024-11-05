@@ -133,6 +133,27 @@ def calculate_stock_data(data):
 
     return new_stock_data
 
+def get_stock_values(data):
+    """
+    get the name of each sandwich
+    and the latest stock value for each
+    creates a dictionary with the sandwich name as the key and the stock quantity as the value
+    """
+    
+    print("Make the following numbers of sandwiches for next market:\n")
+    
+    
+    headings = SHEET.worksheet("stock").row_values(1) # get the headings from the sales worksheet
+        
+    # stock_values = {}    
+    # for heading, stock in zip(headings, latest_stock):
+    #     stock_values[heading] = stock
+    
+    # using dictionary comprehension           
+    stock_values = dict(zip(headings, data)) # create a dictionary with the headings as keys and the data as values
+    
+    print(stock_values)
+
 
 def main():
     """
@@ -149,6 +170,9 @@ def main():
     sales_columns = get_last_5_entries_sales()
     stock_data = calculate_stock_data(sales_columns)
     update_worksheet(stock_data, "stock")
+    
+    get_stock_values(stock_data)
 
 print("Welcome to Love Sandwiches Data Automation")
 main()
+
