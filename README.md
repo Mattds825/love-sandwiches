@@ -44,4 +44,5 @@ Execute the following functions
 ## Technologies
 
 - Python
-- Google Sheets
+- Google Sheets 
+    - gspread and google-auth packages used
